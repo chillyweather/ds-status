@@ -1,1 +1,1 @@
-throw new Error("This plugin template uses Typescript. Follow the instructions in `README.md` to generate `code.js`.")
+figma.showUI(__html__),figma.ui.resize(250,500),figma.ui.onmessage=e=>{!function(e){const i=figma.currentPage;var a;i.findAll((e=>".DS-status"===e.name)).forEach((i=>{i.setProperties({"Property 1":`${e}`})})),i.name=i.name.replace(/['🟣🟡⚪️🟢🔴🔵⚫️🟠']/u,"pending"===(a=e)?"🟣":"in progress"===a?"🟡":"fixes"===a?"🔴":"review"===a?"🔵":"tbd"===a?"⚪️":"approved"===a?"🟢":"⚫️")}(e.type),figma.closePlugin()};
