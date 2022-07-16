@@ -1,0 +1,10 @@
+{
+  "name": "ds status",
+  "id": "1129990748909074025",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma"
+  ],
+  "ui": "ui.html"
+}
