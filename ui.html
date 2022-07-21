@@ -38,6 +38,7 @@
   }
   #in-progress {
     background-color: #f8cf16;
+    color: black;
   }
   #fixes {
     background-color: #e03318;
@@ -51,7 +52,9 @@
   }
   #approved {
     background-color: #72edbc;
+    color: black;
   }
+ 
 </style>
 
 <h2 class="header">Page Status</h2>
@@ -83,5 +86,8 @@
   };
   document.getElementById("approved").onclick = () => {
     parent.postMessage({ pluginMessage: { type: "approved" } }, "*");
+  };
+  document.getElementById("kanye").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "kanye" } }, "*");
   };
 </script>
