@@ -1,36 +1,12 @@
 // @ts-nocheck
-import nameCleaner from "./src/utils.ts";
+import { nameCleaner } from "./src/utils.ts";
+import setStatus from "./src/setStatus.ts";
 
 figma.showUI(__html__);
 figma.ui.resize(250, 520);
 
 function isBalls(reg, text) {
   return reg.test(text);
-}
-
-function nameCleaner(name) {
-  return name.replace(/[\W_]+/g, " ").trim();
-}
-
-function setStatus(message) {
-  if (message === "pending") {
-    return "🟣";
-  }
-  if (message === "in progress") {
-    return "🟡";
-  }
-  if (message === "fixes") {
-    return "🔴";
-  }
-  if (message === "review") {
-    return "🔵";
-  }
-  if (message === "tbd") {
-    return "⚪️";
-  }
-  if (message === "approved") {
-    return "🟢";
-  } else return "⚫️";
 }
 
 //^ change status of one frame only
@@ -59,7 +35,7 @@ function changeProjectStatus(status: string) {
   }
 }
 
-function currentSelection() {
+const currentSelection = () => {
   const result = {};
   const sel = figma.currentPage.selection;
   if (sel.length != 0) {
@@ -72,7 +48,7 @@ function currentSelection() {
   } else {
     return false;
   }
-}
+};
 
 const selection = currentSelection();
 
