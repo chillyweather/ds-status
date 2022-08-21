@@ -1,9 +1,15 @@
 // @ts-nocheck
 import { nameCleaner } from "./src/utils.ts";
 import setStatus from "./src/setStatus.ts";
+import { checkTools } from "./src/checkTools";
+import statusStylesColors from "./src/colorStyles";
+
+checkTools();
 
 figma.showUI(__html__);
 figma.ui.resize(250, 520);
+
+figma.ui.postMessage(statusStylesColors);
 
 function isBalls(reg, text) {
   return reg.test(text);

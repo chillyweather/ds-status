@@ -30,7 +30,7 @@
   button {
     margin-top: 2em;
     justify-content: center;
-    box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.1);
   }
 
   #pending {
@@ -54,7 +54,6 @@
     background-color: #72edbc;
     color: black;
   }
- 
 </style>
 
 <h2 class="header">Page Status</h2>
@@ -69,22 +68,47 @@
 </div>
 
 <script>
-  document.getElementById("pending").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "pending" } }, "*");
-  };
-  document.getElementById("in-progress").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "in progress" } }, "*");
-  };
-  document.getElementById("fixes").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "fixes" } }, "*");
-  };
-  document.getElementById("review").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "review" } }, "*");
-  };
-  document.getElementById("tbd").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "tbd" } }, "*");
-  };
-  document.getElementById("approved").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "approved" } }, "*");
+  onmessage = (event) => {
+    const statusColors = event.data.pluginMessage;
+
+    function setRGB(color){
+      return `rgb(${color.r}, ${color.g}, ${color.b})`
+    }
+
+    const pending = document.getElementById("pending");
+    pending.style.backgroundColor = setRGB(statusColors.pendingColor);
+    pending.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "pending" } }, "*");
+    };
+
+    const inProgress = document.getElementById("in-progress");
+    inProgress.style.backgroundColor = setRGB(statusColors.inProgressColor);
+    inProgress.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "in progress" } }, "*");
+    };
+
+    const review = document.getElementById("review");
+    review.style.backgroundColor = setRGB(statusColors.reviewColor);
+    review.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "review" } }, "*");
+    };
+
+    const fixes = document.getElementById("fixes");
+    fixes.style.backgroundColor = setRGB(statusColors.fixesColor);
+    fixes.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "fixes" } }, "*");
+    };
+
+    const tbd = document.getElementById("tbd");
+    tbd.style.backgroundColor = setRGB(statusColors.tbdColor);
+    tbd.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "tbd" } }, "*");
+    };
+
+    const approved = document.getElementById("approved");
+    approved.style.backgroundColor = setRGB(statusColors.approvedColor);
+    approved.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: "approved" } }, "*");
+    };
   };
 </script>
